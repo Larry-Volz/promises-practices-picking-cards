@@ -11,8 +11,10 @@ numForm.addEventListener("submit", event => {
     .then(res => {
         console.log(res);
         return res.data;
-    }).then (res => {
+    })
+    .then (res => {
         document.querySelector("#displayArea p").innerText=res;
     })
+    .catch(res => console.log("oops - there was a problem"));
 })
 
