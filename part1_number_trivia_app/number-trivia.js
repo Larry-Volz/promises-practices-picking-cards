@@ -6,5 +6,13 @@ numForm.addEventListener("submit", event => {
     console.log(faveNum);
 
     document.querySelector("#displayArea h2").innerText=faveNum
+
+    axios.get(`http://numbersapi.com/${faveNum}/trivia `)
+    .then(res => {
+        console.log(res);
+        return res.data;
+    }).then (res => {
+        document.querySelector("#displayArea p").innerText=res;
+    })
 })
 
