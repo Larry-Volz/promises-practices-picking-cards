@@ -14,9 +14,13 @@ window.onload = function() {
             
             axios.get(`http://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`)
             .then(card => {
-                chosenCard = card.data.cards[0].image;
-                document.querySelector("#flipOver").src=chosenCard;
-
+                if (card.data.remaining > 0){
+                    chosenCard = card.data.cards[0].image;
+                    document.querySelector("#flipOver").src=chosenCard;
+                    console.log(card.data.remaining);
+                } else {
+                    alert ("You are out of cards!")
+                }
             })
         })
     })
